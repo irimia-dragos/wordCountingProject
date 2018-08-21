@@ -30,17 +30,17 @@ public class WordParser {
 	
 	public Map<String, Long> loadWords(InputStream stream) {
 		try (Scanner input = new Scanner(stream)) {
-			Pattern pat = Pattern.compile("[a-zA-Z\\'\\-]+");
-			return input.findAll(pat).map(MatchResult::group).map(String::toLowerCase).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+			return input.findAll(Pattern.compile("[a-zA-Z\\'\\-]+")).
+					map(MatchResult::group).map(String::toLowerCase).
+					collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		}
 	}
 
 
 	public Map<String, Long> sort(Map<String, Long> map) {
-		Map<String, Long> result = map.entrySet().stream()
+		return map.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).limit(10)
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-		return result;
 	}
 
 }

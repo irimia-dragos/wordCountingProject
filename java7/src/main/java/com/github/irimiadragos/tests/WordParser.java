@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,7 +54,7 @@ public class WordParser {
 		return words;
 	}
 
-	public Map<String, Long> sort(Map<String, Long> map) {
+	public Set<Entry<String,Long>> sort(Map<String, Long> map) {
 		TreeSet<Entry<String, Long>> sorted = new TreeSet<Entry<String, Long>>( new Comparator<Entry<String, Long>>() {
 				@Override
 				public int compare(Entry<String, Long> o1, Entry<String, Long> o2) {
@@ -69,7 +70,7 @@ public class WordParser {
 		return sorted;
 	}
 	
-	public Map<String, Long> top(Map<String, Long> sorted, int size) {
+	public Map<String, Long> top(Set<Entry<String,Long>> sorted, int size) {
 		LinkedHashMap<String, Long> ordered = new LinkedHashMap<String, Long>();
 		int i = 0;
 		for(Entry<String, Long> entry : sorted) {
