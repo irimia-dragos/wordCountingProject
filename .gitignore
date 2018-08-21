@@ -1,5 +1,11 @@
 # Compiled class file
 *.class
+target
+.idea
+.project
+.classpath
+.java-version
+*.iml
 
 # Log file
 *.log
