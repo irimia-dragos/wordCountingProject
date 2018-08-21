@@ -20,11 +20,11 @@ public class WordParser {
 
 	public void printResult(String file) {
 		try (InputStream input = new FileInputStream(file)) {
-			sort(loadWords(input));
+			System.out.println(sort(loadWords(input)));
 		} catch (FileNotFoundException fne) {
 			fne.printStackTrace();
 		} catch (IOException e) {
-			
+			e.printStackTrace();
 		}
 	}
 	

@@ -22,7 +22,7 @@ public class WordParser {
 
 	public void printResult(String file) {
 		try (InputStream input = new FileInputStream(file)) {
-			sort(loadWords(input));
+			System.out.println(sort(loadWords(input)));
 		} catch (FileNotFoundException fne) {
 			fne.printStackTrace();
 		} catch (IOException e) {
@@ -66,6 +66,10 @@ public class WordParser {
 			});
 		
 		sorted.addAll(map.entrySet());		
+		return sorted;
+	}
+	
+	public Map<String, Long> top(Map<String, Long> sorted, int size) {
 		LinkedHashMap<String, Long> ordered = new LinkedHashMap<String, Long>();
 		int i = 0;
 		for(Entry<String, Long> entry : sorted) {
