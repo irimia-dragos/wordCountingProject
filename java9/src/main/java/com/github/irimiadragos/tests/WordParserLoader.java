@@ -4,7 +4,7 @@ public class WordParserLoader {
 	
 	private static final String[] classes = {"com.github.irimiadragos.tests.WordParserCollections", "com.github.irimiadragos.tests.WordParserStreams"};
 	
-	private static  WordParserLoader myself ;
+	private static WordParserLoader myself ;
 	private WordParser parser;
 	
 	public static WordParserLoader instance() {
@@ -18,6 +18,7 @@ public class WordParserLoader {
 		if (parser == null) {
 			forceInit();
 		}
+		System.out.println("Using parser " + parser);
 		return parser;
 	}
 
@@ -25,21 +26,12 @@ public class WordParserLoader {
 		this.parser = parser;
 	}
 	
-	private WordParser forceInit() {
+	private void forceInit() {
 		for(String clazz : classes) {
 			try {
 				Class<?> class1 = Class.forName(clazz);
-				return (WordParser) class1.newInstance();
 			}catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
-		return null;
 	}
 }
