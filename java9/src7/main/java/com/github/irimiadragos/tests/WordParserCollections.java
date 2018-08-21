@@ -22,8 +22,6 @@ public class WordParserCollections implements WordParser {
 		WordParserLoader.instance().setParser(new WordParserCollections());
 	}
 	
-	
-	
 	public void printResult(String file) {
 		try (InputStream input = new FileInputStream(file)) {
 			System.out.println(sort(loadWords(input)));
