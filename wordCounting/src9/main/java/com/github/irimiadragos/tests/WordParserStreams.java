@@ -26,7 +26,7 @@ public class WordParserStreams implements WordParser {
 	@Override
 	public String parse(String file) throws WordParserException{
 		try (InputStream input = new FileInputStream(file)) {
-			System.out.println(sort(loadWords(input)));
+			return sort(loadWords(input)).toString();
 		} catch (FileNotFoundException fne) {
 			throw new WordParserException("File " + file + " was not found on system");
 		} catch (IOException e) {
