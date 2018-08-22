@@ -22,19 +22,20 @@ public class WordParserCollections implements WordParser {
 		WordParserLoader.instance().setParser(new WordParserCollections());
 	}
 	
-	public void printResult(String file) {
+	@Override
+	public String parse(String file) throws WordParserException{
 		try (InputStream input = new FileInputStream(file)) {
-			System.out.println(sort(loadWords(input)));
+			return sort(loadWords(input)).toString();
 		} catch (FileNotFoundException fne) {
-			fne.printStackTrace();
+			throw new WordParserException("File " + file + " was not found on system");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//TODO properly log error stack
+			throw new WordParserException("There was error reading file " + e.getMessage());
 		}
 	}
 
 	@Override
-	public Map<String, Long> loadWords(InputStream stream) throws IOException {
+	public Map<String, Long> loadWords(InputStream stream) throws WordParserException {
 		Map<String, Long> words = new HashMap<String, Long>();
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
 			String line;
@@ -52,6 +53,9 @@ public class WordParserCollections implements WordParser {
 					}
 				}
 			}
+		}catch(IOException e) {
+			//TODO properly log error stack
+			throw new WordParserException("There was error reading file " + e.getMessage());
 		}
 		return words;
 	}

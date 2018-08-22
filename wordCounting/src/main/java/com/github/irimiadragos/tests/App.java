@@ -8,8 +8,13 @@ public class App
     	if(args.length == 0) {
     		System.out.println("Please provide a parameters as a file to be parsed");
     	} else {
-            WordParser parser = WordParserLoader.instance().getParser();
-            parser.printResult(args[0]);
+    		try {
+	            WordParser parser = WordParserLoader.instance().getParser();
+	            String result = parser.parse(args[0]);
+	            System.out.println("Top 10 most frequent words are " + result);
+    		}catch(WordParserException wpe) {
+    			System.err.println("Failed to parse file " + wpe.getMessage());    			
+    		}
     	}
     }
 }

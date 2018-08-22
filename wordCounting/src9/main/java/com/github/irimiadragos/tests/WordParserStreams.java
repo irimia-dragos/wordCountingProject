@@ -24,13 +24,14 @@ public class WordParserStreams implements WordParser {
 	}
 
 	@Override
-	public void printResult(String file) {
+	public String parse(String file) throws WordParserException{
 		try (InputStream input = new FileInputStream(file)) {
 			System.out.println(sort(loadWords(input)));
 		} catch (FileNotFoundException fne) {
-			fne.printStackTrace();
+			throw new WordParserException("File " + file + " was not found on system");
 		} catch (IOException e) {
-			e.printStackTrace();
+			//TODO properly log error stack
+			throw new WordParserException("There was error reading file " + e.getMessage());
 		}
 	}
 	

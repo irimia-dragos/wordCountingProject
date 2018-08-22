@@ -8,8 +8,8 @@ public interface WordParser {
 	
 	String WORD_PATTERN = "[a-zA-Z\\'\\-]+";
 	
-	void printResult(String file);
-	Map<String, Long> loadWords(InputStream stream) throws IOException ;
+	String parse(String file) throws WordParserException;
+	Map<String, Long> loadWords(InputStream stream) throws WordParserException ;
 	Map<String, Long> sort(Map<String, Long> map);
 	
 }

@@ -3,7 +3,6 @@ package com.github.irimiadragos.tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.junit.Test;
@@ -11,7 +10,7 @@ import org.junit.Test;
 public class WordParserTest {
 
 	@Test
-	public void test() throws IOException{
+	public void test() throws WordParserException{
 		WordParser parser = WordParserLoader.instance().getParser();
 		Map<String, Long> words = parser.loadWords(WordParserTest.class.getResourceAsStream("/tempest.txt"));
 		assertNotNull(words);
