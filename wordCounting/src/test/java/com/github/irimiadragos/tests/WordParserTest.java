@@ -12,7 +12,7 @@ public class WordParserTest {
 	@Test
 	public void test() throws WordParserException{
 		WordParser parser = WordParserLoader.instance().getParser();
-		Map<String, Long> words = parser.loadWords(WordParserTest.class.getResourceAsStream("/tempest.txt"));
+		Map<String, Long> words = parser.parseWords(WordParserTest.class.getResourceAsStream("/tempest.txt"));
 		assertNotNull(words);
 		
 		

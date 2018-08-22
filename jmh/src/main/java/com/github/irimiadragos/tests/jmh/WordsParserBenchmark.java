@@ -20,7 +20,7 @@ public class WordsParserBenchmark {
     @Benchmark
     public void testLoadMethod(Blackhole bh)  throws WordParserException{
         WordParser parser = WordParserLoader.instance().getParser();
-        parser.loadWords(new ByteArrayInputStream("a aa aaa aaaa aa-aa aa\na aa aaa aaaa aa-aa aa".getBytes()));
+        parser.parseWords(new ByteArrayInputStream("a aa aaa aaaa aa-aa aa\na aa aaa aaaa aa-aa aa".getBytes()));
     }
 
     @Benchmark

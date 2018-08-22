@@ -19,23 +19,7 @@ public class WordParserStreams implements WordParser {
 		WordParserLoader.instance().setParser(new WordParserStreams());
 	}
 	
-	public WordParserStreams() {
-
-	}
-
-	@Override
-	public String parse(String file) throws WordParserException{
-		try (InputStream input = new FileInputStream(file)) {
-			return sort(loadWords(input)).toString();
-		} catch (FileNotFoundException fne) {
-			throw new WordParserException("File " + file + " was not found on system");
-		} catch (IOException e) {
-			//TODO properly log error stack
-			throw new WordParserException("There was error reading file " + e.getMessage());
-		}
-	}
-	
-	public Map<String, Long> loadWords(InputStream stream) {
+	public Map<String, Long> parseWords(InputStream stream) {
 		try (Scanner input = new Scanner(stream)) {
 			return input.findAll(Pattern.compile(WORD_PATTERN)).
 					map(MatchResult::group).map(String::toLowerCase).

@@ -23,19 +23,7 @@ public class WordParserCollections implements WordParser {
 	}
 	
 	@Override
-	public String parse(String file) throws WordParserException{
-		try (InputStream input = new FileInputStream(file)) {
-			return sort(loadWords(input)).toString();
-		} catch (FileNotFoundException fne) {
-			throw new WordParserException("File " + file + " was not found on system");
-		} catch (IOException e) {
-			//TODO properly log error stack
-			throw new WordParserException("There was error reading file " + e.getMessage());
-		}
-	}
-
-	@Override
-	public Map<String, Long> loadWords(InputStream stream) throws WordParserException {
+	public Map<String, Long> parseWords(InputStream stream) throws WordParserException {
 		Map<String, Long> words = new HashMap<String, Long>();
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
 			String line;
