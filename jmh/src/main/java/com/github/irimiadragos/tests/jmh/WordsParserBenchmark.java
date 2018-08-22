@@ -20,7 +20,7 @@ public class WordsParserBenchmark {
     @Benchmark
     public void testLoadMethod(Blackhole bh)  throws WordParserException{
         WordParser parser = WordParserLoader.instance().getParser();
-        parser.parseWords(new ByteArrayInputStream("a aa aaa aaaa aa-aa aa\na aa aaa aaaa aa-aa aa".getBytes()));
+        bh.consume(parser.parseWords(new ByteArrayInputStream("a aa aaa aaaa aa-aa aa\na aa aaa aaaa aa-aa aa".getBytes())));
     }
 
     @Benchmark
@@ -38,7 +38,7 @@ public class WordsParserBenchmark {
         words.put("9h", 14L);
         words.put("10i", 12L);
         words.put("11j", 16L);
-        parser.sort(words);
+        bh.consume(parser.sort(words));
     }
     
     public static void main(String[] args) throws RunnerException {
