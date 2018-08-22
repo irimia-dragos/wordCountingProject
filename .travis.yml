@@ -3,3 +3,5 @@ jdk:
   - oraclejdk8
   - oraclejdk9
   - openjdk8
+# Run Integration tests
+script: "mvn test && mvn clean verify"
