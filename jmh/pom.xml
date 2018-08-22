@@ -34,7 +34,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.irimiadragos.tests</groupId>
+            <groupId>com.github.irimiadragos.tests.wordCounting</groupId>
             <artifactId>wordCounting</artifactId>
             <version>${project.version}</version>
         </dependency>
