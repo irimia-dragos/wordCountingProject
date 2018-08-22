@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.irimiadragos.tests</groupId>
-  <artifactId>wordCountingJDK7</artifactId>
+  <artifactId>wordCounting</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>Word Counting Utility</name>
@@ -14,8 +14,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    
   </properties>
 
   <dependencies>
@@ -75,6 +74,26 @@
             </archive>
           </configuration>
         </plugin>
+        <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${custom.source.path}</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+        
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
@@ -139,6 +158,32 @@
       <comments>A business-friendly OSS license</comments>
     </license>
   </licenses>
+  
+  <profiles>
+  
+  	<profile>
+		<id>Java9</id>
+		<properties>
+			<custom.source.path>src9/main/java</custom.source.path>
+			<maven.compiler.source>9</maven.compiler.source>
+    		<maven.compiler.target>9</maven.compiler.target>
+		</properties>
+		<activation>
+			<jdk>9</jdk>
+		</activation>
+	</profile>
+	<profile>
+		<id>Java7</id>
+		<properties>
+			<custom.source.path>src7/main/java</custom.source.path>
+			<maven.compiler.source>7</maven.compiler.source>
+    		<maven.compiler.target>7</maven.compiler.target>
+		</properties>
+		<activation>
+			<jdk>[1.6,1.8]</jdk>
+		</activation>
+	</profile>
+  </profiles>
 
 
 </project>
