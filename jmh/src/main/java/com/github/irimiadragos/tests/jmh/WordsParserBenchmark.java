@@ -15,6 +15,10 @@ import com.github.irimiadragos.tests.WordParser;
 import com.github.irimiadragos.tests.WordParserException;
 import com.github.irimiadragos.tests.WordParserLoader;
 
+/**
+ * Simple JMH test in order to benchmark both implementations
+ *
+ */
 public class WordsParserBenchmark {
 
     @Benchmark
