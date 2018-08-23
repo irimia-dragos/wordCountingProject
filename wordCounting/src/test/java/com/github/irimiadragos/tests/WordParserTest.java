@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +34,33 @@ public class WordParserTest{
 		words.put("9h", 14L);
 		words.put("10i", 12L);
 		words.put("11j", 16L);
-		Map<String, Long> sorted = parser.sort(words);
-		assertEquals(10, sorted.size());
+		Map<String, Long> sorted = parser.sort(words, 5);
+		assertEquals(5, sorted.size());
+	}
+	
+	@Test
+	public void testLoadSingleMethod() throws WordParserException {
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.parseWords(new ByteArrayInputStream("a a a a a a a a a".getBytes()));
+		assertEquals(1, result.size());
+	}
+	
+	@Test
+	public void testParseNullMethod() throws WordParserException {
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.parseWords(null);
+	}
+	
+	@Test
+	public void testSortNullMethod() throws WordParserException {
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.sort(null, 10);
+	}
+	
+	@Test
+	public void testSortNegativeMethod() throws WordParserException {
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.sort(Collections.<String, Long>emptyMap(), -5);
 	}
 	
 }

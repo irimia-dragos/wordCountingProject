@@ -38,7 +38,7 @@ public class WordsParserBenchmark {
         words.put("9h", 14L);
         words.put("10i", 12L);
         words.put("11j", 16L);
-        bh.consume(parser.sort(words));
+        bh.consume(parser.sort(words, 5));
     }
     
     public static void main(String[] args) throws RunnerException {
