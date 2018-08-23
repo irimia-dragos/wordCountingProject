@@ -36,4 +36,4 @@ java -jar jhm/target/benchmarks.jar
 
 
 # More info
-There is also a short description in the project [wiki page](https://github.com/irimia-dragos/countingWordsProject/wiki)
+There is also a short description in the project [wiki page](https://github.com/irimia-dragos/wordCountingProject/wiki)
