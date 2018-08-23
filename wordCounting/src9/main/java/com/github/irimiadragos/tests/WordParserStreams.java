@@ -56,7 +56,7 @@ public class WordParserStreams implements WordParser {
 	 * @return A ordered map of words
 	 */
 	public Map<String, Long> sort(Map<String, Long> map, int noOfWords) {
-		if (map == null && noOfWords < 0) {
+		if (map == null && noOfWords <= 0) {
 			return Collections.<String, Long>emptyMap();
 		}		
 		return map.entrySet().stream()

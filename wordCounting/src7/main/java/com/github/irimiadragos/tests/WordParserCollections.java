@@ -110,7 +110,7 @@ public class WordParserCollections implements WordParser {
 	 * @return A map with the trimmed entries from the set.
 	 */
 	public Map<String, Long> top(Set<Entry<String,Long>> sorted, int size) {
-		if (sorted == null ){
+		if (sorted == null || size <= 0 ){
 			return Collections.<String, Long>emptyMap();
 		}
 		LinkedHashMap<String, Long> ordered = new LinkedHashMap<String, Long>();

@@ -49,18 +49,21 @@ public class WordParserTest{
 	public void testParseNullMethod() throws WordParserException {
 		WordParser parser = WordParserLoader.instance().getParser();
 		Map<String, Long> result = parser.parseWords(null);
+		assertNotNull(result);
 	}
 	
 	@Test
 	public void testSortNullMethod() throws WordParserException {
 		WordParser parser = WordParserLoader.instance().getParser();
 		Map<String, Long> result = parser.sort(null, 10);
+		assertNotNull(result);
 	}
 	
 	@Test
 	public void testSortNegativeMethod() throws WordParserException {
 		WordParser parser = WordParserLoader.instance().getParser();
 		Map<String, Long> result = parser.sort(Collections.<String, Long>emptyMap(), -5);
+		assertNotNull(result);
 	}
 	
 }

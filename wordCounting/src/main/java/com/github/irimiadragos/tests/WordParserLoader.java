@@ -18,7 +18,6 @@ public class WordParserLoader {
 		if (parser == null) {
 			forceInit();
 		}
-		System.out.println("Using parser " + parser);
 		return parser;
 	}
 
