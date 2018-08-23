@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
+import java.io.Console;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,21 @@ public class WordParserTest{
 		WordParser parser = WordParserLoader.instance().getParser();
 		Map<String, Long> result = parser.parseWords(new ByteArrayInputStream("a aa aaa aaaa aa-aa aa\na aa aaa aaaa aa-aa aa".getBytes()));
 		assertEquals(5, result.size());
+	}
+
+	@Test
+	public void testLoadEmptyMethod() throws WordParserException {
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.parseWords(new ByteArrayInputStream("     ".getBytes()));
+		assertEquals(0, result.size());
+	}
+
+	@Test
+	public void testLoadSingleWord() throws WordParserException {
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.parseWords(new ByteArrayInputStream("  aaa   ".getBytes()));
+		assertEquals(1, result.size());
+		assertEquals("aaa", result.keySet().iterator().next());
 	}
 
 	@Test

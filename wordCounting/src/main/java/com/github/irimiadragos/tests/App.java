@@ -5,9 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ *
+ * Main class of the project.
+ *
+ * This will take care of parameter validation and file loading.
+ *
+ */
 public class App
 {
-	
+
     public static void main( String[] args )
     {
     	if(args.length == 0) {

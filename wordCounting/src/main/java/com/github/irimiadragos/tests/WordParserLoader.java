@@ -14,8 +14,16 @@ public class WordParserLoader {
 	 * Singleton instance of myself
 	 */
 	private static WordParserLoader myself ;
+
+	/**
+	 * Current instance of word parser
+	 */
 	private WordParser parser;
-	
+
+	/**
+	 * Singleton building method. Be aware, it's not multithreaded.
+	 * @return The myself instance
+	 */
 	public static WordParserLoader instance() {
 		if (myself == null) {
 			myself = new WordParserLoader();
