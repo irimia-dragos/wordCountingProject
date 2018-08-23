@@ -39,7 +39,7 @@ public class WordParserStreams implements WordParser {
 		if (stream == null) {
 			return Collections.<String, Long>emptyMap();
 		}
-		try (Scanner input = new Scanner(stream)) {
+		try (Scanner input = new Scanner(stream, ENCODING)) {
 			return input.findAll(Pattern.compile(WORD_PATTERN)).
 					map(MatchResult::group).map(String::toLowerCase).
 					collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));

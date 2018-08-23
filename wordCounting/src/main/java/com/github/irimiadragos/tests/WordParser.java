@@ -11,7 +11,8 @@ import java.util.Map;
 public interface WordParser {
 	
 	String WORD_PATTERN = "[a-zA-Z\\'\\-]+";
-	
+	String ENCODING = "UTF8";
+
 	/**
 	 * Method use to parse the stream in a map of words.
 	 * The keys are the words found and the values are their frequency.

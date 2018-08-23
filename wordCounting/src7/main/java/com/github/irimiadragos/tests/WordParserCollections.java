@@ -42,7 +42,7 @@ public class WordParserCollections implements WordParser {
 			return Collections.<String, Long>emptyMap();
 		}
 		Map<String, Long> words = new HashMap<String, Long>();
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(stream, ENCODING))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 
