@@ -118,7 +118,7 @@
 				<maven.compiler.target>9</maven.compiler.target>
 			</properties>
 			<activation>
-				<jdk>9</jdk>
+				<jdk>[9, )</jdk>
 			</activation>
 		</profile>
 		<profile>
