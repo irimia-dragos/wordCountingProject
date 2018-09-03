@@ -5,10 +5,13 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.Console;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class WordParserTest{
@@ -80,6 +83,35 @@ public class WordParserTest{
 		WordParser parser = WordParserLoader.instance().getParser();
 		Map<String, Long> result = parser.sort(Collections.<String, Long>emptyMap(), -5);
 		assertNotNull(result);
+	}
+
+
+	@Test
+	@Ignore
+	public void testBig() throws WordParserException{
+		WordParser parser = WordParserLoader.instance().getParser();
+		Map<String, Long> result = parser.parseWords(new InputStream(){
+			long i = 0;
+			@Override
+			public int read() throws IOException {
+				i++;
+				if (i > 9e10){
+					return -1;
+				} else if (i % 10 == 0){
+					return '\n';
+				} else if (i % 3 == 0){
+					return (int)'a';
+				} else if (i % 3 == 1){
+					return (int)'b';
+				} else {
+					return (int)' ';
+				}
+			}
+		});
+		assertNotNull(result);
+		System.out.println(result);
+		System.out.println(parser.getClass());
+
 	}
 	
 }
